@@ -6,6 +6,10 @@ namespace L {
     export interface Map extends Evented {
         _controlContainer: HTMLDivElement
     }
+    export interface MapOptions {
+        canvasTooltip: boolean
+    }
+
     export namespace Control { 
         export class CanvasTooltipOptions implements ControlOptions {
             timeout: number = 5000;
@@ -20,7 +24,7 @@ namespace L {
             y: number;
         }
         export class CanvasTooltip extends L.Control {
-            options: CanvasTooltipOptions;
+            override options: CanvasTooltipOptions;
             _map: L.Map;
             _prevTarget: any;
             _container: HTMLDivElement;
@@ -31,7 +35,7 @@ namespace L {
                 this.options = options;
             }
 
-            onAdd (map: L.Map) {
+            override onAdd (map: L.Map) {
                 this._map = map;
 
                 this._container = L.DomUtil.create('div', 'leaflet-control-tooltip');
@@ -147,7 +151,7 @@ namespace L {
         }
     })
     export namespace control {
-        export function canvasTooltip (options) {
+        export function canvasTooltip (options: L.Control.CanvasTooltipOptions) {
             return new Control.CanvasTooltip(options);
         }
     }
