@@ -1,9 +1,11 @@
 .leaflet-control-tooltip {
-    display: none; /* Initially hidden */
+    visibility: hidden;
+    display: block;
     background-color: #131415;
     opacity: 0.8;
     color: white;
     border-radius: 5px;
     padding: 3px 10px;
     pointer-events: none;
+    text-overflow: ellipsis;
 }
