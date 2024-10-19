@@ -49,7 +49,8 @@ namespace L {
                 if (!event.sourceTarget) return;
                 var elem = this._container;
                 if (!event.message)
-                    debugger;
+                    return;
+
                 elem.innerHTML = event.message.replace(/(?:\r\n|\r|\n)/g, '<br>');
                 const messageClass = event.class;
                 if (event.sourceTarget) {
